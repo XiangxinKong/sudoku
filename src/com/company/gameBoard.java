@@ -5,11 +5,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * User interface of the game
+ *
+ * @author Xiangxin Kong
+ * @version 1.0
+ */
 public class gameBoard extends JPanel implements ActionListener {
     JFrame window;
     final static int size = 9;
     sudoku su;
-    JTextField input[][] = new JTextField[size][size];
+    JTextField[][] input = new JTextField[size][size];
 
     gameBoard(sudoku su) {
         this.su = su;
@@ -37,8 +43,6 @@ public class gameBoard extends JPanel implements ActionListener {
                 g2.setStroke(new BasicStroke(2));
                 if (su.state[x][y] != 0) {
                     g.drawString(String.valueOf(su.state[x][y]), x * 60 + 85, y * 60 + 100);
-                } else {
-
                 }
             }
         }
