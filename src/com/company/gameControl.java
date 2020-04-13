@@ -14,14 +14,15 @@ import java.util.ArrayList;
  */
 public class gameControl extends JPanel implements ActionListener {
     ArrayList<JButton> level;
-
+    String[] words;
     gameControl() {
         JFrame window = new JFrame();
         window.add(this);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setBounds(1000, 500, 400, 600);
+        window.setBounds(1000, 500, 400, 500);
         window.setBackground(new Color(200, 200, 200));
         window.setVisible(true);
+        window.setTitle("Sudoku");
         setLayout(null);
         setUpButtons();
     }
@@ -31,7 +32,7 @@ public class gameControl extends JPanel implements ActionListener {
      */
     void setUpButtons() {
         level = new ArrayList<>();
-        String[] words = {"Beginner", "Easy", "Normal", "Hard", "Challege"};
+        words = new String[]{"Beginner", "Easy", "Normal", "Hard", "Challege"};
         for (int i = 0; i < 5; i++) {
             JButton temp = new JButton(words[i]);
             temp.setFont(new Font("serif", Font.BOLD, 18));
@@ -49,7 +50,8 @@ public class gameControl extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        int numOfEmpties = 13 + 12 * level.indexOf(e.getSource());
-        new gameBoard(sudokuGenerator.gnerate(numOfEmpties));
+        int buttonIndex=level.indexOf(e.getSource());
+        int numOfEmpties = 13 + 12 * buttonIndex;
+        new gameBoard(sudokuGenerator.gnerate(numOfEmpties),words[buttonIndex]);
     }
 }

@@ -33,6 +33,11 @@ public class sudoku {
         filled = size * size - empty;
     }
 
+    public sudoku() {
+        empty = 0;
+        filled = size * size;
+    }
+
     /**
      * Check if the sudoku is completed
      */

@@ -17,13 +17,14 @@ public class gameBoard extends JPanel implements ActionListener {
     sudoku su;
     JTextField[][] input = new JTextField[size][size];
 
-    gameBoard(sudoku su) {
+    gameBoard(sudoku su,String title) {
         this.su = su;
         window = new JFrame();
         window.add(this);
         window.setBounds(1000, 500, size * 60 + 160, size * 60 + 200);
         window.setBackground(new Color(240, 240, 240));
         window.setVisible(true);
+        window.setTitle(title);
         setLayout(null);
         placeInputField();
         repaint();
